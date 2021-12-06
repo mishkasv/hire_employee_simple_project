@@ -24,7 +24,7 @@ def candidate(request):
         if serializer.is_valid(raise_exception=True):
             serializer.save()
         return Response(status=status.HTTP_201_CREATED, data=serializer.data)
-    emp = Employee.objects.order_by('total_experience')
+    emp = Employee.objects.order_by('-total_experience')
     serializer = EmployeeSerializer(emp, many=True)
     data = {"candidates": serializer.data}
     return Response(status=status.HTTP_200_OK, data=data)

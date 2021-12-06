@@ -37,8 +37,8 @@ class TestEmployee(TestCase):
         self.assertEqual(response.status_code, 200)
         # Sorted by workExperience
         self.data2['workExperience'].sort(key=lambda exper: (int(exper['start'][-4:]), int(exper['end'][-4:])))
-        self.assertEqual(response.data['candidates'][1]['workExperience'] , self.data2['workExperience'])
+        self.assertEqual(response.data['candidates'][0]['workExperience'] , self.data2['workExperience'])
 
         #Sorted by totalExperience
-        self.assertGreater(response.data['candidates'][1]['totalExperience'], response.data['candidates'][0]['totalExperience'])
+        self.assertGreater(response.data['candidates'][0]['totalExperience'], response.data['candidates'][1]['totalExperience'])
 # Create your tests here.
