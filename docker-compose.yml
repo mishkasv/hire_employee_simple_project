@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    command: ["python","manage.py","runserver"]
+    container_name: web_django
+    volumes:
+    - .:/code
+    env_file:
+      - .env
