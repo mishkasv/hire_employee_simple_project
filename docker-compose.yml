@@ -5,9 +5,10 @@ services:
     build:
       context: .
       dockerfile: .Dockerfile
-    command: bash -c "pythom manage.py migrate && python manage.py runserver"
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     container_name: web_django
     volumes:
-    - .:/code
-    env_file:
-      - .env
+      - .:/code
+      - .env:/code/.env
+    ports:
+    - 8000:8000
